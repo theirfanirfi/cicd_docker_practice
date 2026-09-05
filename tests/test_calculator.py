@@ -23,7 +23,7 @@ def test_other_operations_not_implemented(operation):
 
 
 def test_index_renders(client):
-    assert client.get("/").status_code == 404
+    assert client.get("/").status_code == 200
 
 
 def test_addition_via_form(client):
