@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Calculator</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <main class="card">
+    <h1>Calculator</h1>
+
+    <form method="post" class="calc">
+      <input type="text" name="a" value="{{ a }}" placeholder="First number" autofocus>
+      <input type="text" name="b" value="{{ b }}" placeholder="Second number">
+
+      <div class="ops">
+        {% for key, op in operations.items() %}
+          <label class="op {{ 'selected' if operation == key }}">
+            <input type="radio" name="operation" value="{{ key }}"
+                   {{ 'checked' if operation == key }}>
+            <span>{{ op[0] }}</span>
+          </label>
+        {% endfor %}
+      </div>
+
+      <button type="submit">=</button>
+    </form>
+
+    {% if error %}
+      <p class="error">{{ error }}</p>
+    {% elif result is not none %}
+      <p class="result"><span class="expr">{{ expression }} =</span> {{ result }}</p>
+    {% endif %}
+
+    <p class="note">Only addition is wired up so far.</p>
+  </main>
+</body>
+</html>
