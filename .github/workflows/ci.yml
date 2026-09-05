@@ -9,17 +9,18 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
-
     steps:
-      - name: checkout my repository
+      -name: checkout my repository
         uses: actions/checkout@v6
-      
       - name: setup python
-        uses: actions/setup-python@v6
-          with:
-            "python-version": "3.11"
+          uses: actions/setup-python@v6
+            with:
+              python-version: "3.11"
+        
       - name: install dependencies
-          run: pip install -r requirements.txt
+          run: 
+            pip install -r requirements.txt
       
       - name: run test cases
-          run: pytest
+          run: 
+            pytest
